@@ -4,7 +4,7 @@
 ███████ ███████ ██████  ██    ██ ███████ ██████  
 ██      ██      ██   ██ ██    ██ ██      ██   ██ 
 ███████ █████   ██████  ██    ██ █████   ██████  
-     ██ ██      ██   ██  ██  ██  ██      ██   ██ 
+     ██ ██      ██   ██  ██  ██  ██      ██   ██ 
 ███████ ███████ ██   ██   ████   ███████ ██   ██                                           
 
 dependencies: {
@@ -126,7 +126,7 @@ if (sentryEnabled) {
 
 // Stats
 const defaultStats = {
-    enabled: true,
+    enabled: false,
     src: 'https://stats.mirotalk.com/script.js',
     id: '41d26670-f275-45bb-af82-3ce91fe57756',
 };
@@ -591,7 +591,7 @@ function startServer() {
             }
         });
 
-        socket.on('getPeerCounts', async ({}, callback) => {
+        socket.on('getPeerCounts', async ({ }, callback) => {
             if (!roomList.has(socket.room_id)) return;
 
             const room = roomList.get(socket.room_id);
@@ -1234,11 +1234,11 @@ function startServer() {
         function isValidHttpURL(input) {
             const pattern = new RegExp(
                 '^(https?:\\/\\/)?' + // protocol
-                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-                    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-                    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-                    '(\\#[-a-z\\d_]*)?$',
+                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+                '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+                '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+                '(\\#[-a-z\\d_]*)?$',
                 'i',
             ); // fragment locator
             return pattern.test(input);

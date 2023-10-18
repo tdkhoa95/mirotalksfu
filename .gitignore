@@ -13,8 +13,3 @@ package-lock.json
 
 # cache
 .cache
-
-# personal
-config.js
-docker-compose.yml
-docker-push.sh
